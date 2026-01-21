@@ -7,7 +7,7 @@ Experience in scientific data analysis, modeling, and visualization.
 
 ## About
 
-I am a first-year master’s student in data science transitioning from astrophysics to tackling impactful data science problems.  
+I am a first-year master’s student in data science interested in impactful data science problems, coming from an astrophysics background.  
 My previous work focuses on using Python to clean, analyze, and model real-world and scientific datasets.  
 I am especially interested in research-driven and applied machine learning problems.
 
@@ -15,22 +15,25 @@ I am especially interested in research-driven and applied machine learning probl
 
 ## Skills
 
-- Profient Python (NumPy, pandas, Matplotlib, Tensorflow)
-- Basic R, Java, SQL, Unix/Linux
+- Proficient Python (NumPy, pandas, Matplotlib, Tensorflow)
+- Machine learning + statistical modeling
 - Data cleaning and exploratory data analysis
-- Statistical modeling + machine learning
+- Novice: R, Java, SQL (Postgres, functional programming), Unix/Linux
 - Git and reproducible workflows
 
 ---
 
 ## Projects
 
-- **CNN + Explainable AI Pipeline for Feature Importance on Planetary Data (NASA Internship)**  
-  [View project](projects/xai-feature-importance)
-
-- **Time Series Forecasting**  
+- **Time Series Forecasting on California Energy Data**  
   Forecasting and evaluation of temporal data using classical models.  
-  [View project](projects/time-series)
+  [View project](projects/time-series-energy-forecasting)
+
+- **CNN + Explainable AI Pipeline for Feature Importance on Planetary Data (NASA Internship)**  
+  [View project](projects/shap-feature-importance)
+
+- **Meal Delivery Sales - Querying and Data Analytics**
+  [View project](projects/delivery-sales-analytics)
 
 ---
 
