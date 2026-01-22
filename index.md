@@ -27,7 +27,7 @@ I am especially interested in research-driven and applied machine learning probl
 
 - **Time Series Forecasting on California Energy Data**  
   Forecasting and evaluation of temporal data using classical models.  
-  [View project](_projects/time-series-energy-forecasting/energy-demand-forecasting.html)
+  [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
 - **CNN + Explainable AI Pipeline for Feature Importance on Planetary Data (NASA Internship)**  
   [View project](_projects/shap-feature-importance)
