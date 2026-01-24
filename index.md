@@ -32,7 +32,7 @@ I am most interested in applied machine learning and practical analytics that su
   CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
   [View project](https://github.com/emader12/feature-importance-xai-ic)
 
-- **Acme Gourmet Meals: Sales Analytics Case Study**
+- **Acme Gourmet Meals: Sales Analytics Case Study**  
   Analysis of transaction data (SQL + Python) examining revenue patterns, seasonality, and customer behavior.
   [View project](projects/acme-sales-analytics/acme-sales-analytics.html)
 
