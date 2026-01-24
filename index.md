@@ -29,8 +29,9 @@ I am especially interested in research-driven and applied machine learning probl
   Forecasting and evaluation of temporal data using classical models.  
   [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
-- **Machine Learning**  
-  [View project](projects/)
+- **Feature Importance Analysis with Explainable AI**  
+  CNN training, feature engineering, and interpretability analysis using SHAP values and information content applied to spectral data.  
+  [View project](https://github.com/emader12/feature-importance-xai-ic)
 
 - **Meal Delivery Sales - Querying and Data Analytics**
   [View project](projects/delivery-sales-analytics)
