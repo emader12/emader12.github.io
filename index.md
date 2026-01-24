@@ -1,15 +1,14 @@
 # Emily Mader
 
-Data Science masters student with a background in astrophysics.  
-Experience in scientific data analysis, modeling, and visualization.
+Data science master's student at UC Berkeley (MIDS).
 
 ---
 
 ## About
 
-I am a first-year master’s student in data science interested in impactful data science problems, coming from an astrophysics background.  
-My previous work focuses on using Python to clean, analyze, and model real-world and scientific datasets.  
-I am especially interested in research-driven and applied machine learning problems.
+I am a data science master’s student with a background in astrophysics.  
+I focus on using Python to clean, analyze, and model real-world and scientific data.  
+I am most interested in applied machine learning and practical analytics that support decisions.
 
 ---
 
@@ -18,7 +17,7 @@ I am especially interested in research-driven and applied machine learning probl
 - Proficient Python (NumPy, pandas, Matplotlib, Tensorflow)
 - Machine learning + statistical modeling
 - Data cleaning and exploratory data analysis
-- Novice: R, Java, SQL (Postgres, functional programming), Unix/Linux
+- Novice: R, Java, SQL (Postgres), Unix/Linux
 - Git and reproducible workflows
 
 ---
@@ -26,15 +25,16 @@ I am especially interested in research-driven and applied machine learning probl
 ## Projects
 
 - **Time Series Forecasting on California Energy Data**  
-  Forecasting and evaluation of temporal data using classical models.  
+  Forecasting and evaluation of temporal energy demand with classical models.  
   [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
 - **Feature Importance Analysis with Explainable AI**  
-  CNN training, feature engineering, and interpretability analysis using SHAP values and information content applied to spectral data.  
+  CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data.  
   [View project](https://github.com/emader12/feature-importance-xai-ic)
 
-- **Meal Delivery Sales - Querying and Data Analytics**
-  [View project](projects/delivery-sales-analytics)
+- **Acme Gourmet Meals: Sales Analytics Case Study (SQL, Python, Visualization)**
+  Analysis of transaction data examining revenue patterns, seasonality, and customer behavior.
+  [View project](projects/acme-sales-analytics/acme-sales-analytics.html)
 
 ---
 

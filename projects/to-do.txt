@@ -1,7 +1,0 @@
-
-
-
-- in xai repo, remove notes, polish comments 
-- link xai repo to pages 
-- finish sql analytics proj
-
