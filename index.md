@@ -29,11 +29,11 @@ I am especially interested in research-driven and applied machine learning probl
   Forecasting and evaluation of temporal data using classical models.  
   [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
-- **CNN + Explainable AI Pipeline for Feature Importance on Planetary Data (NASA Internship)**  
-  [View project](_projects/shap-feature-importance)
+- **Machine Learning**  
+  [View project](projects/)
 
 - **Meal Delivery Sales - Querying and Data Analytics**
-  [View project](_projects/delivery-sales-analytics)
+  [View project](projects/delivery-sales-analytics)
 
 ---
 
