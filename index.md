@@ -30,10 +30,10 @@ I am most interested in applied machine learning and practical analytics that su
 
 - **Feature Importance Analysis with Explainable AI**  
   CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
-  [View project](https://github.com/emader12/feature-importance-xai-ic)
+  [CNN Training](https://nbviewer.org/github/emader12/feature-importance-xai-ic/blob/main/notebooks/1_Train_CNN.ipynb) | [SHAP Computing](https://nbviewer.org/github/emader12/feature-importance-xai-ic/blob/main/notebooks/2_Compute_SHAP.ipynb) | [GitHub](https://github.com/emader12/feature-importance-xai-ic)
 
-- **Acme Gourmet Meals: Sales Analytics Case Study**
-  Analysis of transaction data (SQL + Python) examining revenue patterns, seasonality, and customer behavior.
+- **Acme Gourmet Meals: Sales Analytics Case Study**  
+  Analysis of transaction data (SQL + Python) examining revenue patterns, seasonality, and customer behavior.  
   [View project](projects/acme-sales-analytics/acme-sales-analytics.html)
 
 ---
