@@ -28,6 +28,10 @@ Experienced in building ML pipelines and translating complex data into actionabl
 
 ## Projects
 
+- **Feature Importance Analysis with Explainable AI**  
+  CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
+  [CNN Training](projects/cnn-feature-importance-shap/1_Train_CNN.html) | [SHAP Computing](projects/cnn-feature-importance-shap/2_Compute_SHAP.html) | [Poster](projects/cnn-feature-importance-shap/Mader_HWO_XAISpectralRegions.jpg) | [GitHub](https://github.com/emader12/feature-importance-xai-ic)
+
 - **Acme Gourmet Meals: Sales Analytics Case Study**  
   Analysis of transaction data (SQL + Python) examining revenue patterns, seasonality, and customer behavior.  
   [View project](projects/acme-sales-analytics/acme-sales-analytics.html)
@@ -35,10 +39,6 @@ Experienced in building ML pipelines and translating complex data into actionabl
 - **Time Series Forecasting on California Energy Data**  
   Forecasting and evaluation of temporal energy demand with classical models.  
   [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
-
-- **Feature Importance Analysis with Explainable AI**  
-  CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
-  [CNN Training](projects/cnn-feature-importance-shap/1_Train_CNN.html) | [SHAP Computing](projects/cnn-feature-importance-shap/2_Compute_SHAP.html) | [Poster](projects/cnn-feature-importance-shap/Mader_HWO_XAISpectralRegions.jpg) | [GitHub](https://github.com/emader12/feature-importance-xai-ic)
 
 ---
 
