@@ -1,7 +1,5 @@
 # Emily Mader
 
-Data science master's student at UC Berkeley (MIDS).
-
 ---
 
 ## About
