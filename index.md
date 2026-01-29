@@ -38,8 +38,8 @@ Experienced in building ML pipelines and translating complex data into actionabl
   Forecasting and evaluation of temporal energy demand with classical models.  
   [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
-- **Xpectra: Python Package for Spectral Analysis**
-  Data cleaning, baseline correction, spectral analysis, & data visualization tools (NASA internship).
+- **Xpectra: Python Package for Spectral Analysis**  
+  Data cleaning, baseline correction, spectral analysis, & data visualization tools (NASA internship).  
   [Documentation](https://ehsangharibnezhad.github.io/Xpectra/index.html)
 
 ---
