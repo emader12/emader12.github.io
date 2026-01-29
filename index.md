@@ -10,7 +10,7 @@ Experienced in building ML pipelines and translating complex data into actionabl
 **Experience:**  
 - 2 NASA internships: Developing explainable AI pipeline and production-ready Python package for scientific teams
 - Proven track record delivering insights from complex datasets using Python, SQL, and deep learning frameworks
-- Applied ML, time series forecasting, model interpretability, and reproducible workflows
+- Applied ML, forecasting, model interpretability, and reproducible workflows
 
 ---
 
@@ -28,7 +28,7 @@ Experienced in building ML pipelines and translating complex data into actionabl
 
 - **Feature Importance Analysis with Explainable AI**  
   CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
-  [CNN Training](projects/cnn-feature-importance-shap/1_Train_CNN.html) | [SHAP Computing](projects/cnn-feature-importance-shap/2_Compute_SHAP.html) | [Poster](projects/cnn-feature-importance-shap/Mader_HWO_XAISpectralRegions.jpg) | [GitHub](https://github.com/emader12/feature-importance-xai-ic)
+  [View project](projects/cnn-feature-importance-shap/index.html)
 
 - **Acme Gourmet Meals: Sales Analytics Case Study**  
   Analysis of transaction data (SQL + Python) examining revenue patterns, seasonality, and customer behavior.  
