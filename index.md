@@ -4,13 +4,12 @@
 
 ## About
 
-Data science master's student at UC Berkeley (graduating December 2026) with a background in astrophysics and research.  
-Experienced in building ML pipelines and translating complex data into actionable insights through Python, SQL, and deep learning.  
+Data Science Master's student at UC Berkeley (Dec 2026) with a track record of delivering high-impact projects in applied machine learning and scientific research. Experienced in building ML pipelines, developing software packages, and turning complex datasets into actionable insights through Python, SQL, and deep learning. 
 
 **Experience:**  
-- 2 NASA internships: Developing explainable AI pipeline and production-ready Python package for scientific teams
-- Proven track record delivering insights from complex datasets using Python, SQL, and deep learning frameworks
-- Applied ML, forecasting, model interpretability, and reproducible workflows
+- 2 NASA internships: Developing explainable AI pipeline and production-ready open source Python package 
+- Applied ML, SQL, forecasting, model interpretability, and reproducible workflows
+- Strong collaborative experience delivering insights from complex data and presenting results to technical and non-technical audiences
 
 ---
 
@@ -21,6 +20,7 @@ Experienced in building ML pipelines and translating complex data into actionabl
 - Data cleaning and exploratory data analysis
 - SQL (Postgres), R, Java, Unix/Linux, AWS (EC2)
 - Git and reproducible workflows
+- Data analysis & translating domain expertise into insights
 
 ---
 
