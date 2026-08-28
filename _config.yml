@@ -2,6 +2,16 @@ title: Emily Mader
 description: Data Science Masters Student at UC Berkeley (MIDS)
 theme: jekyll-theme-minimal
 
+nav_links:
+  - label: Resume
+    url: /Resume.pdf
+  - label: GitHub
+    url: https://github.com/emader12
+  - label: LinkedIn
+    url: https://linkedin.com/in/emader12
+  - label: Handshake
+    url: https://app.joinhandshake.com/profiles/emader12
+
 markdown: kramdown
 
 collections:

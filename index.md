@@ -1,14 +1,8 @@
-# Emily Mader
-
-[Resume](Resume.pdf) &nbsp;|&nbsp; [GitHub](https://github.com/emader12) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/emader12) &nbsp;|&nbsp; [Handshake](https://app.joinhandshake.com/profiles/emader12)
-
----
-
 ## About
 
 Data Science master's student at UC Berkeley (Dec 2026) with an astrophysics background and hands-on experience in data engineering and applied machine learning. I've built production data pipelines for manufacturing test data, developed open-source scientific software at NASA Ames, and published first-author research in *The Astronomical Journal*. Graduating December 2026 and seeking data science roles starting January 2027.
 
-**Experience:**  
+### Experience: 
 - **Frore Systems** — Data Analytics Intern (2026). Built an Azure pipeline ingesting manufacturing test data into a lakehouse, delivered a Power BI dashboard for failure analysis, and derived retest thresholds from a decision tree model.
 - **A Round Group** — Data Science Intern (part time, 2026). Built a feature pipeline and XGBoost models forecasting live-event ticket demand.
 - **NASA Ames** — OSTEM Intern, two terms (2024–2025). CNN model and Explainable AI for exoplanet spectral models; developed Xpectra, an open-source Python package for spectral analysis.
