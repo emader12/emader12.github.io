@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Terrain Classification - Emily Mader</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        header {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 2em; }
+        .subtitle { color: #666; font-size: 1.1em; margin-bottom: 20px; }
+        .description { color: #555; line-height: 1.8; margin-bottom: 20px; }
+
+        .credit {
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid #3498db;
+            padding: 10px 0 10px 15px;
+            background-color: #f6fbfd;
+            margin-top: 20px;
+        }
+
+        .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .badge {
+            background-color: #e8f4f8;
+            color: #0366d6;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 { color: #2c3e50; font-size: 1.1em; margin: 25px 0 10px; }
+        p { margin-bottom: 15px; }
+        ul { margin: 0 0 15px 22px; }
+        li { margin-bottom: 8px; }
+
+        .figure { margin: 25px 0; text-align: center; }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        .figure figcaption {
+            margin-top: 12px;
+            color: #666;
+            font-size: 0.92em;
+            font-style: italic;
+            text-align: left;
+        }
+
+        .figure-side {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin: 25px 0;
+        }
+        .figure-side p { flex: 1; margin-bottom: 0; }
+        .figure-side .figure {
+            flex: 0 0 200px;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .figure-side { flex-direction: column; }
+            .figure-side .figure { flex-basis: auto; max-width: 200px; margin: 0 auto; }
+        }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; }
+        table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
+        th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid #e1e4e8; }
+        th { background-color: #f6f8fa; color: #2c3e50; font-weight: 600; }
+        td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .up { color: #1a7f37; font-weight: 600; }
+        .down { color: #b32020; font-weight: 600; }
+
+        .callout {
+            background-color: #fffaf0;
+            border-left: 4px solid #e0a800;
+            padding: 18px 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+
+        .github-link {
+            display: inline-block;
+            background-color: #24292e;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 5px;
+        }
+        .github-link:hover { background-color: #0366d6; }
+
+        .back-link {
+            display: inline-block;
+            color: #0366d6;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        a { color: #0366d6; }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 15px; }
+            header, section { padding: 20px; }
+            h1 { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>Mars Terrain Classification</h1>
+            <p class="subtitle">Classifying Curiosity rover images under severe class imbalance with a 3 stage ResNet50 pipeline</p>
+
+            <div class="description">
+                <p>Autonomous navigation for Martian rovers requires highly reliable computer vision. However, existing models often over-optimize for the majority of terrain classes, such as background sand, while failing to detect rare but critical minority classes. This project presents a 3-stage transfer learning pipeline using a lightweight ResNet50 architecture to classify Curiosity Rover images while explicitly addressing extreme class imbalance. By enforcing fairness without sacrificing baseline terrain accuracy, our pipeline improved the overall Test Macro-F1 from 0.6131 to 0.6656. This yielded up to a +0.63 F1 improvement on individual minority classes like the REMS UV Sensor. In turn, this architecture achieved a 76.5% final test accuracy as a robust foundation for real-world rover autonomy.</p>
+            </div>
+
+            <div class="credit">
+                Group project, UC Berkeley MIDS, DATASCI 207 (Applied Machine Learning).<br>
+                Olivia Jackson Lambert, Emily Mader, Sarah Son, Peter Le, and Will Yang.
+            </div>
+
+            <div class="badges">
+                <span class="badge">PyTorch</span>
+                <span class="badge">TensorFlow / Keras</span>
+                <span class="badge">ResNet50</span>
+                <span class="badge">Transfer Learning</span>
+                <span class="badge">Class Imbalance</span>
+                <span class="badge">SAM2</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Data</h2>
+            <p>The dataset was collected by Stanboli and Wagstaff at NASA in 2017, from images taken by three of the Curiosity rover's onboard cameras. It has 6,691 images labeled across 24 classes covering surface features (ground, horizon, sun), rover instruments and equipment, and calibration targets.</p>
+
+            <ul>
+                <li>The data is split by sol (Martian day): 3,746 train, 1,640 validation, and 1,305 test images.</li>
+                <li>There is a large class imbalance. The ground class alone has over 2,000 training images, while several other classes have fewer than 10.</li>
+                <li>Images were resized to 256x256 using reflection padding so they weren't stretched or distorted, then normalized to ImageNet's mean and standard deviation to match the pretrained backbone. Training images were also augmented with horizontal flips, small rotations, and contrast jitter to help the model generalize to different lighting.</li>
+            </ul>
+
+            <figure class="figure">
+                <img src="figures/class_distribution.png" alt="Bar chart of training image counts per class, showing Ground at over 2,000 images and a long tail of classes with fewer than 100.">
+                <figcaption>Training set class distribution. Ground dominates the dataset while most other classes only have a handful of examples, makes plain accuracy the wrong metric here.</figcaption>
+            </figure>
+
+            <p>Source: <a href="https://zenodo.org/records/1049137" target="_blank">https://zenodo.org/records/1049137</a></p>
+        </section>
+
+        <section>
+            <h2>Approach</h2>
+            <p>We used a ResNet50 backbone pretrained on ImageNet and adapted it to Mars imagery in three stages, to incrementally measure contributions:</p>
+
+            <ul>
+                <li><strong>Stage 1, baseline.</strong> Froze the entire backbone and trained only the classification head. This tells us how far pretrained ImageNet features alone can get us on Mars imagery, before spending any effort fine-tuning.</li>
+                <li><strong>Stage 2, partial fine-tuning.</strong> Unfroze the last residual block (conv5) and retrained it at a lower learning rate, since that block holds the most semantic features and is most likely to be mismatched between ImageNet objects and Martian terrain.</li>
+                <li><strong>Stage 3, class imbalance training.</strong> Kept conv5 unfrozen but added per-class weights, computed inversely to class frequency and capped at 2.5 so rare classes don't destabilize training. We lowered the learning rate further and switched early stopping to track validation macro F1, since that's what actually tracks this to be a balanced classifier.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Results</h2>
+
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th class="num">Train Acc</th>
+                        <th class="num">Val Acc</th>
+                        <th class="num">Test Acc</th>
+                        <th class="num">Macro F1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Baseline</td><td class="num">0.91</td><td class="num">0.91</td><td class="num">0.717</td><td class="num">0.605</td></tr>
+                    <tr><td>Stage 2</td><td class="num">0.97</td><td class="num">0.97</td><td class="num">0.728</td><td class="num">0.613</td></tr>
+                    <tr><td>Stage 3</td><td class="num">0.99</td><td class="num">0.98</td><td class="num">0.765</td><td class="num">0.666</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <p>Stage 2's high training and validation accuracy was misleading. It came in part from the model memorizing majority classes rather than genuinely learning the rare ones, which is exactly what macro F1 is meant to catch. Stage 3 addressed that directly with class weighting, and the biggest gains showed up on classes with few training examples:</p>
+
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th class="num">Train N</th>
+                        <th class="num">Stage 2 F1</th>
+                        <th class="num">Stage 3 F1</th>
+                        <th class="num">Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>REMS UV Sensor</td><td class="num">12</td><td class="num">0.15</td><td class="num">0.78</td><td class="num up">+0.63</td></tr>
+                    <tr><td>Observation Tray</td><td class="num">85</td><td class="num">0.50</td><td class="num">0.86</td><td class="num up">+0.36</td></tr>
+                    <tr><td>Portion Tube</td><td class="num">73</td><td class="num">0.70</td><td class="num">0.88</td><td class="num up">+0.17</td></tr>
+                    <tr><td>DRT Side</td><td class="num">8</td><td class="num">0.54</td><td class="num">0.67</td><td class="num up">+0.14</td></tr>
+                    <tr><td>DRT Front</td><td class="num">4</td><td class="num">0.00</td><td class="num">0.12</td><td class="num up">+0.12</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <p>The REMS UV Sensor result is a good example of how class weighting re-prioritizes the classifier. A few dominant classes showed a small F1 reduction across stages, though the tradeoff is negligible compared to the overall gain in balance across classes.</p>
+
+            <figure class="figure">
+                <img src="figures/stage_3_iter5_cm.png" alt="Normalized confusion matrix for the Stage 3 model across all classes, with a strong diagonal and some remaining confusion concentrated among visually similar hardware classes.">
+                <figcaption>Stage 3 test confusion matrix. Most classes fall on a strong diagonal, though some confusion remains where classes are visually similar or extremely rare.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Discussion</h2>
+            <p>The main takeaway is that accuracy alone is not sufficient to tune this model given the extreme class imbalance. Stage 2 looked strong on paper, but that was largely because it defaulted to dominant classes like ground and horizon, where minority classes got absorbed into those categories. Stage 3's class weighting corrected for that bias and pushed real improvement into the underrepresented classes, without significantly sacrificing the majority class scores.</p>
+
+            <h3>SAM2 analysis</h3>
+            <p>To understand some of the remaining misclassifications, we ran SAM2 on a few of the most confused class pairs: DRT Side and Scoop, Ground and Horizon, and Chemin Inlet Open and Inlet. SAM2 segments an image into regions without needing any labels, so we could mask one region at a time, rerun the classifier, and see how much the model's confidence in its wrong prediction changed. This let us localize which part of an image was actually driving an error, without needing pixel level annotations.</p>
+
+            <figure class="figure">
+                <img src="figures/sam2_drt_horizon.png" alt="SAM2 panel with two examples. Left: a DRT Side image classified as Scoop at 99.8% confidence, where masking the best region only drops confidence by 0.002 and the prediction does not change. Right: a Horizon image classified as Ground at 93.8% confidence, where masking one region drops confidence by 0.910 and flips the prediction.">
+                <figcaption>Two misclassified test images and their SAM2 masking results. The DRT Side to Scoop error (left) barely moves with any single region masked. The Horizon to Ground error (right) collapses once one specific region is masked, and the prediction actually flips.</figcaption>
+            </figure>
+
+            <p>These two examples show two different kinds of confusion. For DRT Side classified as Scoop, no single part of the image is responsible, since the two instruments just look alike overall. For Horizon classified as Ground, masking one region drops confidence by 0.910 and flips the prediction back to correct, meaning one specific region, not the overall scene, was driving the entire error.</p>
+
+            <h3>Robustness to dust</h3>
+            <div class="figure-side">
+                <p>We also tested the Stage 3 model on a dust degraded version of the test set, blending in a dust colored overlay, reducing contrast, and adding a slight blur to approximate a dusty camera or a hazy day on Mars. Accuracy dropped from 76.5% to 72.3%, a decline of about 4.2 points. That's a real hit, but the model still held up reasonably well, which is encouraging given that dust accumulation is a realistic condition for a rover that operates for months or years on the surface.</p>
+                <figure class="figure">
+                    <img src="figures/dust_clean_vs_dusty.png" alt="Side by side comparison of clean and dust degraded versions of three Curiosity rover images, showing reduced contrast and a slight haze on the dusty copies.">
+                    <figcaption>Clean (left) vs. dust degraded (right) copies of the same test images.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xpectra - Emily Mader</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        header {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 2em; }
+        .subtitle { color: #666; font-size: 1.1em; margin-bottom: 20px; }
+        .description { color: #555; line-height: 1.8; margin-bottom: 20px; }
+
+        .credit {
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid #3498db;
+            padding: 10px 0 10px 15px;
+            background-color: #f6fbfd;
+            margin-top: 20px;
+        }
+
+        .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .badge {
+            background-color: #e8f4f8;
+            color: #0366d6;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 { color: #2c3e50; font-size: 1.1em; margin: 25px 0 10px; }
+        p { margin-bottom: 15px; }
+        ul { margin: 0 0 15px 22px; }
+        li { margin-bottom: 8px; }
+
+        .figure { margin: 25px 0; text-align: center; }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        .figure figcaption {
+            margin-top: 12px;
+            color: #666;
+            font-size: 0.92em;
+            font-style: italic;
+            text-align: left;
+        }
+
+        .links-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px; }
+
+        .github-link {
+            display: inline-block;
+            background-color: #24292e;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .github-link:hover { background-color: #0366d6; }
+
+        .docs-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .docs-link:hover { background-color: #217dbb; }
+
+        .back-link {
+            display: inline-block;
+            color: #0366d6;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        a { color: #0366d6; }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 15px; }
+            header, section { padding: 20px; }
+            h1 { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>Xpectra</h1>
+            <p class="subtitle">Open source Python package for analyzing laboratory spectra and identifying spectral lines, built to support exoplanet and brown dwarf opacity models</p>
+
+            <div class="description">
+                <p>Exoplanet and brown dwarf atmosphere models depend on opacity data: how strongly each molecule absorbs light at a given wavelength, temperature, and pressure. That data starts in the lab, and turning a raw laboratory spectrum into a usable, HITRAN-linked line parameter used to be a slow, manual process. Xpectra automates the core of that pipeline, baseline correction, peak fitting, and line identification, using methane as the primary test case since it's one of the more important absorbers in these atmospheres.</p>
+            </div>
+
+            <div class="credit">
+                Developed at NASA Ames Research Center over two NASA OSTEM internship terms, as part of a NASA-funded collaboration (grant XRP23) studying laboratory absorption spectra of exoplanet-relevant molecules, led by Salma Bejaoui and Dr. Ehsan Gharib-Nezhad.<br>
+                I was the primary developer, with Dr. Gharib-Nezhad providing the project outline and guidance. This work also contributed to a NASA Habitable Worlds Observatory white paper.
+            </div>
+
+            <div class="badges">
+                <span class="badge">Python</span>
+                <span class="badge">Open Source</span>
+                <span class="badge">Spectroscopy</span>
+                <span class="badge">HITRAN</span>
+                <span class="badge">Bokeh</span>
+                <span class="badge">Curve Fitting</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>The Problem</h2>
+            <p>Exoplanet and brown dwarf atmosphere models depend on opacity data, so researchers record how a gas like methane absorbs light across a range of pressures and temperatures in the lab, then need to identify each absorption feature and match it to a known transition in the HITRAN database. Doing that fitting and line identification by hand for every spectrum doesn't scale, and HITRAN's line list format is notoriously difficult to parse and cross reference correctly. Xpectra was built for the NASA Ames   Space Science and Astrobiology Division I interned with, to make that process faster and repeatable across many lab spectra, and to feed cleanly into the opacity databases that atmosphere models rely on.</p>
+        </section>
+
+        <section>
+            <h2>What Xpectra Does</h2>
+            <p>The package is organized into a few modules that cover the core workflow:</p>
+            <ul>
+                <li><strong>SpecMaster</strong> loads a raw lab spectrum and lets you define the wavenumber range to analyze.</li>
+                <li><strong>SpecFitAnalyzer</strong> models and subtracts the baseline, then fits the individual absorption peaks to extract parameters like line position and broadening.</li>
+                <li><strong>LineAssigner</strong> connects to the HITRAN database to identify which molecular transition each fitted peak corresponds to, essentially labeling the spectral lines.</li>
+                <li><strong>SpecStatVisualizer</strong> gives interactive Bokeh plots for exploring a spectrum and reviewing the fitted results.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Output</h2>
+
+            <div class="figure">
+                <img src="figures/spectral_analysis_pipeline.jpg" alt="Three panel diagram showing a raw CH4 laboratory spectrum, its baseline modeled and subtracted using ARPLS, and individual peaks fit with Gaussian profiles overlaid on the data with a residual panel below.">
+                <figcaption>Baseline correction and peak fitting on a CH<sub>4</sub> laboratory spectrum. The sloping baseline is modeled and removed, then each peak is fit individually, with the residual panel confirming the fit quality.</figcaption>
+            </div>
+
+            <div class="figure">
+                <img src="figures/opacity_generator_pipeline.jpg" alt="Three panel diagram showing pressure broadening coefficients fit across rotational quantum number and symmetry class, a HITRAN line list dataframe, and settings for generating an opacity cross section.">
+                <figcaption>Fitting pressure broadening coefficients from literature, updating HITRAN's line list, and generating an opacity cross section for use in atmosphere models. This part of the pipeline was still in progress at the end of my internship.</figcaption>
+            </div>
+        </section>
+
+        <section>
+            <h2>Links</h2>
+            <div class="links-row">
+                <a href="https://github.com/EhsanGharibNezhad/Xpectra" class="github-link" target="_blank">
+                    View on GitHub &rarr;
+                </a>
+                <a href="https://ehsangharibnezhad.github.io/Xpectra/index.html" class="docs-link" target="_blank">
+                    Read the Docs &rarr;
+                </a>
+            </div>
+            <p>Xpectra isn't currently under active development, since Dr. Gharib-Nezhad has since left NASA. The code and docs above are still available if you'd like to see how it works.</p>
+        </section>
+    </div>
+</body>
+</html>
