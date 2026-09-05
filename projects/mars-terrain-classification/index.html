@@ -194,7 +194,7 @@
 
         <section>
             <h2>Approach</h2>
-            <p>We used a ResNet50 backbone pretrained on ImageNet and adapted it to Mars imagery in three stages, to incrementally measure contributions:</p>
+            <p>The classifier was built in TensorFlow/Keras, using a ResNet50 backbone pretrained on ImageNet, adapted to Mars imagery in three stages to incrementally measure contributions:</p>
 
             <ul>
                 <li><strong>Stage 1, baseline.</strong> Froze the entire backbone and trained only the classification head. This tells us how far pretrained ImageNet features alone can get us on Mars imagery, before spending any effort fine-tuning.</li>
@@ -252,8 +252,8 @@
             <p>The REMS UV Sensor result is a good example of how class weighting re-prioritizes the classifier. A few dominant classes showed a small F1 reduction across stages, though the tradeoff is negligible compared to the overall gain in balance across classes.</p>
 
             <figure class="figure">
-                <img src="figures/stage_3_iter5_cm.png" alt="Normalized confusion matrix for the Stage 3 model across all classes, with a strong diagonal and some remaining confusion concentrated among visually similar hardware classes.">
-                <figcaption>Stage 3 test confusion matrix. Most classes fall on a strong diagonal, though some confusion remains where classes are visually similar or extremely rare.</figcaption>
+                <img src="figures/stage_3_iter5_cm.png" alt="Normalized confusion matrix for the Stage 3 model across all classes, with a strong diagonal and some remaining confusion concentrated among visually similar hardware classes. White rows refer to classes not present in the test set.">
+                <figcaption>Stage 3 test confusion matrix. White rows refer to classes not present in the test set. Most classes fall on a strong diagonal, though some confusion remains where classes are visually similar or extremely rare. </figcaption>
             </figure>
         </section>
 
@@ -262,23 +262,34 @@
             <p>The main takeaway is that accuracy alone is not sufficient to tune this model given the extreme class imbalance. Stage 2 looked strong on paper, but that was largely because it defaulted to dominant classes like ground and horizon, where minority classes got absorbed into those categories. Stage 3's class weighting corrected for that bias and pushed real improvement into the underrepresented classes, without significantly sacrificing the majority class scores.</p>
 
             <h3>SAM2 analysis</h3>
-            <p>To understand some of the remaining misclassifications, we ran SAM2 on a few of the most confused class pairs: DRT Side and Scoop, Ground and Horizon, and Chemin Inlet Open and Inlet. SAM2 segments an image into regions without needing any labels, so we could mask one region at a time, rerun the classifier, and see how much the model's confidence in its wrong prediction changed. This let us localize which part of an image was actually driving an error, without needing pixel level annotations.</p>
+            <p>To understand some of the remaining misclassifications, we ran Meta's SAM2 (PyTorch) on a few of the most confused class pairs: DRT Side and Scoop, Ground and Horizon, and Chemin Inlet Open and Inlet. SAM2 segments an image into regions without needing any labels, so we could mask one region at a time, rerun the classifier, and see how much the model's confidence in its wrong prediction changed. This let us localize which part of an image was actually driving an error, without needing pixel level annotations.</p>
 
             <figure class="figure">
                 <img src="figures/sam2_drt_horizon.png" alt="SAM2 panel with two examples. Left: a DRT Side image classified as Scoop at 99.8% confidence, where masking the best region only drops confidence by 0.002 and the prediction does not change. Right: a Horizon image classified as Ground at 93.8% confidence, where masking one region drops confidence by 0.910 and flips the prediction.">
                 <figcaption>Two misclassified test images and their SAM2 masking results. The DRT Side to Scoop error (left) barely moves with any single region masked. The Horizon to Ground error (right) collapses once one specific region is masked, and the prediction actually flips.</figcaption>
             </figure>
 
-            <p>These two examples show two different kinds of confusion. For DRT Side classified as Scoop, no single part of the image is responsible, since the two instruments just look alike overall. For Horizon classified as Ground, masking one region drops confidence by 0.910 and flips the prediction back to correct, meaning one specific region, not the overall scene, was driving the entire error.</p>
+            <p>These two examples show two different kinds of confusion. For DRT Side classified as Scoop, no single part of the image is responsible, since the two instruments just look alike overall. For Horizon classified as Ground, masking one region drops confidence by 0.910 and flips the prediction back to correct, meaning one specific region (the actual ground present in horizon image) drove the entire error. This illustrates how crucial segmentation analysis can be for understanding misclassifications in order to further improve the model.</p>
 
             <h3>Robustness to dust</h3>
             <div class="figure-side">
-                <p>We also tested the Stage 3 model on a dust degraded version of the test set, blending in a dust colored overlay, reducing contrast, and adding a slight blur to approximate a dusty camera or a hazy day on Mars. Accuracy dropped from 76.5% to 72.3%, a decline of about 4.2 points. That's a real hit, but the model still held up reasonably well, which is encouraging given that dust accumulation is a realistic condition for a rover that operates for months or years on the surface.</p>
+                <p>We also tested the Stage 3 model on a dust degraded version of the test set, blending in a dust colored overlay, reducing contrast, and adding a slight blur to approximate a dusty camera or a hazy day on Mars. Accuracy dropped from 76.5% to 72.3%, a decline of about 4.2 points. The marginal drop is encouraging given that dust accumulation is a realistic condition for a rover that operates for months or years on the surface.</p>
                 <figure class="figure">
                     <img src="figures/dust_clean_vs_dusty.png" alt="Side by side comparison of clean and dust degraded versions of three Curiosity rover images, showing reduced contrast and a slight haze on the dusty copies.">
                     <figcaption>Clean (left) vs. dust degraded (right) copies of the same test images.</figcaption>
                 </figure>
             </div>
+        </section>
+
+        <section>
+            <h2>Takeaways</h2>
+            <p>A few concrete next steps fall directly out of these results:</p>
+            <ul>
+                <li><strong>Target the ground/horizon confusion with composition-aware augmentation.</strong> SAM2 showed that one large region, not a texture or object, drove the horizon-classified-as-ground error. Random-resized-crop or similar augmentation that varies where the horizon line sits in the frame would directly attack that layout confusion, rather than adding more of the same kind of images.</li>
+                <li><strong>Add dust and haze to the training augmentations, not just the test set.</strong> We only simulated dust at evaluation time to measure the drop. The training augmentations (flip, rotation, contrast jitter) never included that haze effect, so training on dust-degraded copies directly could close some of that 4.2-point gap instead of just measuring it.</li>
+                <li><strong>Use higher resolution imagery for the classes that struggle most.</strong> This dataset is downsampled to roughly 256x256. Pulling full-resolution originals from the PDS Imaging Atlas for visually similar hardware classes (like DRT Side vs. Scoop) could give the model more detail to actually tell them apart.</li>
+                <li><strong>Try oversampling rare classes instead of only weighting them.</strong> Class weighting improved macro F1 but came with small regressions on a few mid-frequency classes. Oversampling or targeted augmentation of the rarest classes (some have fewer than 10 training images) could raise their F1 without pulling the decision boundary away from other classes as much.</li>
+            </ul>
         </section>
 
     </div>

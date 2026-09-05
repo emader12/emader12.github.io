@@ -1,6 +1,6 @@
 ## About
 
-Data Science master's student at UC Berkeley (Dec 2026) with an astrophysics background and hands-on experience in data engineering and applied machine learning. I've built production data pipelines for manufacturing test data, developed open-source scientific software at NASA Ames, and published first-author research in *The Astronomical Journal*. Graduating December 2026 and seeking data science roles starting January 2027.
+Data Science master's student at UC Berkeley (Dec 2026) with an astrophysics background and hands-on experience in data engineering and applied machine learning. I've built production data pipelines for manufacturing test data, developed ML workflows and scientific software at NASA Ames, and published first-author research in *The Astronomical Journal*. Graduating December 2026 and seeking data science roles starting January 2027.
 
 ### Experience:
 
@@ -14,7 +14,7 @@ Data Science master's student at UC Berkeley (Dec 2026) with an astrophysics bac
 
 ## Skills
 
-- **Languages & tools:** Python (pandas, NumPy), SQL (Postgres), R, Git
+- **Languages & tools:** Python (pandas, NumPy), SQL (Postgres, Azure SQL), R, Git
 - **Cloud & data:** Azure, Microsoft Fabric (Lakehouse, Power BI)
 - **ML:** scikit-learn, XGBoost, TensorFlow, SHAP
 - **Statistics:** regression, time series, causal inference
