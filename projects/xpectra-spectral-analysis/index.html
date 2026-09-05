@@ -133,15 +133,14 @@
 
         <header>
             <h1>Xpectra</h1>
-            <p class="subtitle">Open source Python package for analyzing laboratory spectra and identifying spectral lines, built to support exoplanet and brown dwarf opacity models</p>
+            <p class="subtitle">Open source Python package for analyzing laboratory spectra and identifying spectral lines, built to support exoplanet radiative-transfer models</p>
 
             <div class="description">
-                <p>Exoplanet and brown dwarf atmosphere models depend on opacity data: how strongly each molecule absorbs light at a given wavelength, temperature, and pressure. That data starts in the lab, and turning a raw laboratory spectrum into a usable, HITRAN-linked line parameter used to be a slow, manual process. Xpectra automates the core of that pipeline, baseline correction, peak fitting, and line identification, using methane as the primary test case since it's one of the more important absorbers in these atmospheres.</p>
+                <p>Exoplanet and brown dwarf atmosphere models depend on opacity data: how strongly each molecule absorbs light at a given wavelength, temperature, and pressure. That data starts in the lab, but turning a raw laboratory spectrum into a usable, HITRAN-linked line list used to be a slow, manual process. Xpectra automates the core of that pipeline: baseline correction, peak fitting, and line identification, using methane as the primary test case.</p>
             </div>
 
             <div class="credit">
-                Developed at NASA Ames Research Center over two NASA OSTEM internship terms, as part of a NASA-funded collaboration (grant XRP23) studying laboratory absorption spectra of exoplanet-relevant molecules, led by Salma Bejaoui and Dr. Ehsan Gharib-Nezhad.<br>
-                I was the primary developer, with Dr. Gharib-Nezhad providing the project outline and guidance. This work also contributed to a NASA Habitable Worlds Observatory white paper.
+                Developed at NASA Ames Research Center over two NASA OSTEM internship terms, as part of a NASA-funded collaboration (grant XRP23) studying laboratory absorption spectra of exoplanet-relevant molecules, led by Dr. Salma Bejaoui and Dr. Ehsan Gharib-Nezhad.<br>
             </div>
 
             <div class="badges">
@@ -150,23 +149,20 @@
                 <span class="badge">Spectroscopy</span>
                 <span class="badge">HITRAN</span>
                 <span class="badge">Bokeh</span>
+                <span class="badge">matplotlib</span>
+                <span class="badge">seaborn</span>
                 <span class="badge">Curve Fitting</span>
             </div>
         </header>
 
         <section>
-            <h2>The Problem</h2>
-            <p>Exoplanet and brown dwarf atmosphere models depend on opacity data, so researchers record how a gas like methane absorbs light across a range of pressures and temperatures in the lab, then need to identify each absorption feature and match it to a known transition in the HITRAN database. Doing that fitting and line identification by hand for every spectrum doesn't scale, and HITRAN's line list format is notoriously difficult to parse and cross reference correctly. Xpectra was built for the NASA Ames   Space Science and Astrobiology Division I interned with, to make that process faster and repeatable across many lab spectra, and to feed cleanly into the opacity databases that atmosphere models rely on.</p>
-        </section>
-
-        <section>
             <h2>What Xpectra Does</h2>
-            <p>The package is organized into a few modules that cover the core workflow:</p>
+            <p>The package is organized into a few modules that cover the core workflow, built for the NASA Ames Space Science and Astrobiology Division I interned with:</p>
             <ul>
                 <li><strong>SpecMaster</strong> loads a raw lab spectrum and lets you define the wavenumber range to analyze.</li>
                 <li><strong>SpecFitAnalyzer</strong> models and subtracts the baseline, then fits the individual absorption peaks to extract parameters like line position and broadening.</li>
-                <li><strong>LineAssigner</strong> connects to the HITRAN database to identify which molecular transition each fitted peak corresponds to, essentially labeling the spectral lines.</li>
-                <li><strong>SpecStatVisualizer</strong> gives interactive Bokeh plots for exploring a spectrum and reviewing the fitted results.</li>
+                <li><strong>LineAssigner</strong> parses a HITRAN line list to identify which molecular transition each fitted lab peak corresponds to. HITRAN's line list format is notoriously difficult to parse and cross reference by hand.</li>
+                <li><strong>SpecStatVisualizer</strong> gives interactive Bokeh plots and static matplotlib visualizations for exploring a spectrum and reviewing the fitted results.</li>
             </ul>
         </section>
 
@@ -182,6 +178,12 @@
                 <img src="figures/opacity_generator_pipeline.jpg" alt="Three panel diagram showing pressure broadening coefficients fit across rotational quantum number and symmetry class, a HITRAN line list dataframe, and settings for generating an opacity cross section.">
                 <figcaption>Fitting pressure broadening coefficients from literature, updating HITRAN's line list, and generating an opacity cross section for use in atmosphere models. This part of the pipeline was still in progress at the end of my internship.</figcaption>
             </div>
+        </section>
+
+        <section>
+            <h2>Open Source</h2>
+            <p>At NASA, open source is treated as part of the scientific method rather than an afterthought. Publicly available code and data make results reproducible, invite scrutiny from outside the immediate team, and ensure the analysis outlives the tenure of any single contributor. I presented on this at NASA Ames's ST Open Science Workshop in September 2024, with Xpectra as the case study.</p>
+            <p>Developing Xpectra for that audience meant treating it as software rather than a one-off analysis script: version control on GitHub, type-hinted functions, detailed docstrings, structured logging in place of print statements, and Sphinx documentation generated directly from the docstrings.</p>
         </section>
 
         <section>
