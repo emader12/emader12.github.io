@@ -36,7 +36,7 @@ CNN training, feature engineering, and interpretability analysis using SHAP valu
 Open-source package automating baseline correction, peak fitting, and HITRAN line-list assignment for laboratory exoplanet/brown-dwarf spectra (NASA internship).  
 [View project](projects/xpectra-spectral-analysis/index.html)
 - **Time Series Forecasting on California Energy Data**  
-Forecasting and evaluation of temporal energy demand with classical models.  
+Hourly electricity demand forecast for California combining OLS on weather and calendar variables with SARIMA on the residuals; six times more accurate than a persistence baseline one hour ahead, validated across twelve rolling test weeks.  
 [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
 ---
