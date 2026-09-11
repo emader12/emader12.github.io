@@ -27,16 +27,16 @@ Data Science master's student at UC Berkeley (Dec 2026) with an astrophysics bac
 ## Projects
 
 - **Mars Terrain Classification**  
-ResNet50 transfer-learning pipeline classifying 25 terrain and hardware classes in Curiosity rover surface imagery under extreme class imbalance, with SAM2 analysis of misclassifications (group project).  
+TensorFlow/Keras transfer-learning pipeline (ResNet50) classifying 24 terrain and instrument classes in Curiosity rover imagery under extreme class imbalance, lifting macro-F1 from 0.61 to 0.67, with zero-shot SAM-2 segmentation in PyTorch to analyze misclassifications (group project).  
 [View project](projects/mars-terrain-classification/index.html)
 - **Feature Importance Analysis with Explainable AI**  
-CNN training, feature engineering, and interpretability analysis using SHAP values on spectral data (NASA internship).  
+1D convolutional neural network in TensorFlow/Keras on exoplanet atmospheric spectra with SHAP-based explainable AI, identifying the spectral regions driving predictions and comparing them to physics-based information content; presented at the STScI Habitable Worlds Observatory Symposium (NASA internship).  
 [View project](projects/cnn-feature-importance-shap/index.html)
 - **Xpectra: Python Package for Spectral Analysis**  
-Open-source package automating baseline correction, peak fitting, and HITRAN line-list assignment for laboratory exoplanet/brown-dwarf spectra (NASA internship).  
+Open-source Python package automating baseline correction, curve fitting, and HITRAN line-list assignment for laboratory spectra, with interactive Bokeh visualizations; built over NASA internship.  
 [View project](projects/xpectra-spectral-analysis/index.html)
-- **Time Series Forecasting on California Energy Data**  
-Hourly electricity demand forecast for California combining OLS on weather and calendar variables with SARIMA on the residuals; six times more accurate than a persistence baseline one hour ahead, validated across twelve rolling test weeks.  
+- **Forecasting California Electricity Demand**  
+Hourly electricity demand forecast for California in R, combining OLS on weather and calendar variables with SARIMA on the residuals; six times more accurate than a persistence baseline one hour ahead, validated by rolling-origin cross-validation across twelve test weeks.  
 [View project](projects/time-series-energy-forecasting/energy-demand-forecasting.html)
 
 ---
